@@ -28,6 +28,7 @@ def main():
                 test_root])
         except subprocess.CalledProcessError as e:
             print e
+            return
         
         baseline_root = os.path.join(
             baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm")

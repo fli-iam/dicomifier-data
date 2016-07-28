@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+
+import filecmp
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+
+def main():
+    input_ = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "input"))
+    baseline = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "baseline"))
+    
+    dicomdiff = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "dicomdiff"))
+    
+    directory = tempfile.mkdtemp()
+    try:
+        test_root = os.path.join(directory, "dicom")
+        try:
+            subprocess.check_call([
+                "bruker2dicom", "convert", "--dicomdir", 
+                os.path.join(
+                    input_, 
+                    "20160718_115906_plateforme_fantome_nouille_other_1_7"),
+                test_root])
+        except subprocess.CalledProcessError as e:
+            print e
+        
+        baseline_root = os.path.join(
+            baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm")
+        
+        for pathname, dirnames, filenames in os.walk(baseline_root):
+            relative_pathname = pathname[len(os.path.join(baseline_root, "")):]
+            test_pathname = os.path.join(test_root, relative_pathname)
+            for filename in filenames:
+                baseline_filename = os.path.join(pathname, filename)
+                test_filename = os.path.join(test_pathname, filename)
+                if not os.path.isfile(os.path.join(test_pathname, filename)):
+                    print "{} missing in test".format(
+                        os.path.join(relative_pathname, filename))
+                else:
+                    try:
+                        stdout = subprocess.check_output([
+                            dicomdiff, "-H",
+                            "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
+                            "-x", "InstanceCreationTime",
+                            baseline_filename, test_filename],
+                            stderr=subprocess.STDOUT)
+                    except subprocess.CalledProcessError:
+                        print os.path.join(relative_pathname, filename)
+                        print stdout
+        for pathname, dirnames, filenames in os.walk(test_root):
+            relative_pathname = pathname[len(os.path.join(test_root, "")):]
+            baseline_pathname = os.path.join(baseline_root, relative_pathname)
+            for filename in filenames:
+                if not os.path.isfile(os.path.join(baseline_pathname, filename)):
+                    print "{} missing in baseline".format(
+                        os.path.join(relative_pathname, filename))
+    finally:
+        shutil.rmtree(directory)
+
+if __name__ == "__main__":
+    sys.exit(main())

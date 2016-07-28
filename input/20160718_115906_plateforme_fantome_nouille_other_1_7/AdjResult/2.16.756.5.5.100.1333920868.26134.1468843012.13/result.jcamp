@@ -1,0 +1,14 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-18 13:58:33.893 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/AdjResult/2.16.756.5.5.100.1333920868.26134.1468843012.13/result.jcamp
+$$ process /opt/PV6.0.1/prog/mod/pipe
+##$PVM_StudyB0Map=(</opt/PV6.0.1/data/po>, 
+<20160718_115906_plateforme_fantome_nouille_other_1_7>, 19, 1)
+##$PVM_StudyB0MapShimset=(0, 1216, 0, 0, 0, 1450, -511, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+##END=
+$$ File finished by PARX at 2016-07-18 13:58:33.905 +0200

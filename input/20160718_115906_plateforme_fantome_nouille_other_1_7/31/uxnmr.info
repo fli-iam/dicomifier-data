@@ -1,0 +1,111 @@
+CONFIGURATION INFORMATION
+=========================
+
+Path         : /opt/PV6.0.1/conf/instr/spect/uxnmr.info
+Date         : Tue Oct 20 17:37:01 2015
+Release      : TopSpin Acquisition Version 3.1PV beta-pl1
+Installed in : /opt/PV6.0.1
+Host         : var.u-strasbg.fr
+OS           : CentOS release 5.9 (Final)
+CPU          : Intel(R) Xeon(R) CPU E5-1620 0 @ 3.60GHz (8 cores at 1200 MHz with Hyperthreading)
+User         : po (Chrystelle Po)
+Description  : Biospec 
+Location     : ICUBE Strasbourg
+System       : Avance III NMR spectrometer
+1H-frequency : 300.34 MHz
+Order Number : 10112043
+Configured in: /opt/PV6.0.1/conf/instr/spect
+
+IPSO: connected to spectrometer subnet
+- TCP/IP address = 149.236.99.253
+ - IPSO type: AQS
+- Tctrl : 1
+- Fctrls: 2
+- Gctrl1: with digital preemphasis
+- Rctrl : 1
+- FREDs : 1
+- DPP : 1
+
+DRU: AQS DRU-E Z102520/03602 ECL 07.00
+- TCP/IP address = 149.236.99.89
+- Firmware Version = 150505
+- DRU controls AQS-Rack and HPPR/2
+
+AQS: connected to 149.236.99.89:/dev/tty10
+  _Slot_ SBSB _____________________Board_____________________
+  Number Addr Type HW-VS FW-VS ID  ECL Name   Description
+  -----------------------------------------------------------
+     0   0x24 0x32     0        S  2.2 SGU-1  AQS SGU/3 600 (2CH) Z117129/01335 ECL 02.02 FPGA-Vs=20131031
+     2   0x10 0x43   0x5    CD  R  0.2 REC-1  AQS RXAD/2 600 Z130588/852 ECL 00.02
+     3   0x34 0xd6   0x1        X  3.0 REF-1  REF/3-600 Reference Board for AQS/3 Receiver
+    13   0xa0 0x93     0        V  0.1 PS-1   
+    14   0xa1 0x91     0        V  1.2 PS-2   AQS PSM-D Power Supply Module
+    --   0x20 0xd8     0        B  1.1 MASTER AQS/3+ Chassis
+     1   0x20  0x7     0        B      MASTER AQS Rack Master
+
+
+Router: none installed
+
+
+Transmitters at the spectrometer subnet:
+----------------------------------------
+BLA_W1345501_0332 W1345501/0332 ECL 21:
+- TCP/IP address = 149.236.99.252
+- Firmware VS    = 20120627
+- Amplifier      = BLA1000 IE 15-400MHZ: W1345501/0332 ECL 21
+- Controller     = BLA CONTROL BOARD 6 2CH: W1522050/7650 ECL 50
+BLA_W1345501_0333 W1345501/0333 ECL 21:
+- TCP/IP address = 149.236.99.251
+- Firmware VS    = 20120627
+- Amplifier      = BLA1000 IE 15-400MHZ: W1345501/0333 ECL 21
+- Controller     = BLA CONTROL BOARD 6 2CH: W1522050/7615 ECL 50
+
+Gradient amplifiers at the spectrometer subnet:
+----------------------------------------------
+BGA1: BGAU_W134655_0040
+- TCP/IP address   = 149.236.99.254
+- Firmware version = 20131028
+- Web version      = 6.0
+- Current limits   = 0.0/X, 0.0/Y, 0.0/Z (in A)
+
+Preamplifiers :
+HPPR: - HPPR/2 preamplifier connected to 149.236.99.89:/dev/tty10
+    Type      : HPPR/2
+    Controller: Application firmware = c.
+                no LED display for tuning and matching
+    Module  1 : HPLNA 19F1H (virtual 50 Ohm reference: 100.0%/0.1deg, reflection meter)
+                 PN=Z103202, SN=00166 from 20130918
+    Module  2 : HPLNA BB31P (reflection meter)
+                 PN=Z111088, SN=00074 from 20130909
+    Module  3 : HPLNA 19F1H (virtual 50 Ohm reference: 100.1%/0.1deg, reflection meter)
+                 PN=Z103202, SN=00168 from 20130918
+    Module  4 : ADM Function Module
+
+
+
+Frequency generation:
+- F1: for SGU
+- F2: for SGU
+
+
+
+RF cable connections (detected by 'confamp')
+--------------------------------------------------------------------
+SGU1 NORM output -> input 1 of transmitter 1 (BLA1000 IE 15-400MHZ W1345501/0332 at TCP/IP 149.236.99.252)
+SGU1 AUX  output -> open
+SGU2 NORM output -> input 1 of transmitter 2 (BLA1000 IE 15-400MHZ W1345501/0333 at TCP/IP 149.236.99.251)
+SGU2 AUX  output -> TUNE signal input of HPPR
+
+Blanking cable connections (detected by 'confamp')
+--------------------------------------------------------------------
+transmitter 1 (BLA1000 IE 15-400MHZ W1345501/0332 at TCP/IP 149.236.99.252) amplifier B-1000W uses blanking 1
+transmitter 1 (BLA1000 IE 15-400MHZ W1345501/0332 at TCP/IP 149.236.99.252) amplifier B-300W uses blanking 1
+transmitter 2 (BLA1000 IE 15-400MHZ W1345501/0333 at TCP/IP 149.236.99.251) amplifier B-1000W uses blanking 2
+transmitter 2 (BLA1000 IE 15-400MHZ W1345501/0333 at TCP/IP 149.236.99.251) amplifier B-300W uses blanking 2
+
+Preamplifier connections (detected by 'confrecpre')
+--------------------------------------------------------------------
+Tune-SGU2 -> HPLNA 19F1H -> REC1
+Tune-SGU2 -> HPLNA BB31P -> REC1
+Tune-SGU2 -> HPLNA 19F1H -> REC1
+

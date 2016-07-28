@@ -1,0 +1,12 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-18 11:59:14.791 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/1/pdata/1/id
+$$ process /opt/PV6.0.1/prog/bin/parxserver
+##$DATASET_KEY=( 65 )
+<2.16.756.5.5.100.1333920868.10495.1468835954.109>
+##END=
+$$ File finished by PARX at 2016-07-18 11:59:14.791 +0200

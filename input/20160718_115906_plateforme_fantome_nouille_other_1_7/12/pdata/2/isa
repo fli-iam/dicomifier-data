@@ -1,0 +1,55 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-18 13:03:11.555 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/12/pdata/2/isa
+$$ process /opt/PV6.0.1/prog/mod/xtip
+##$ISA_calc_image=Yes
+##$ISA_first_image=8
+##$ISA_num_images=3
+##$ISA_image_incr=9
+##$ISA_points_number=3
+##$ISA_points_used=3
+##$ISA_points=( 3 )
+(Yes, 2990.85, 13.1403624294984, 7.52248079884049, 0) (Yes, 1490.85, 
+8.13113049916662, 4.55545637141071, 0) (Yes, 490.85, 3.17373084181368, 
+1.657441867916, 0)
+##$ISA_x_axis=( 80 )
+<recovery time [msec]>
+##$ISA_x_values=( 3 )
+2990.85 1490.85 490.85
+##$ISA_scaling=Lin_Scaling
+##$ISA_divisor=1
+##$ISA_func_name=( 32 )
+<t1sat>
+##$ISA_func_desc=( 80 )
+<T1 saturation recovery>
+##$ISA_force_reinit=No
+##$ISA_bypass_fit=No
+##$ISA_save_fixed=No
+##$ISA_pars_number=3
+##$ISA_pars_variable=2
+##$ISA_pars=( 3 )
+(No, <absolute bias>, 0, -2147483647, 2147483647, 0, 0, 1) (Yes, <signal 
+intensity>, 0, 1.19209289550781e-07, 2147483647, 39929.2241414388, 
+5896599371.33333, 1) (Yes, <T1 relaxation time [ms]>, 1.19209289550781e-07, 
+1.19209289550781e-07, 2147483647, 236618785.333333, 34532813389824, 1)
+##$ISA_pars_list=( 3 )
+1 2 0
+##$ISA_tolerance=0.000345266983001244
+##$ISA_max_iter=255
+##$ISA_skip_iter=1
+##$ISA_mat_solv=Gauss
+##$ISA_min_std=1.19209289550781e-07
+##$ISA_use_std=No
+##$ISA_chi_sq=0.032631236750056
+##$ISA_chisq_scale=1
+##$ISA_use_art_scale=Yes
+##$ISA_art_scale=0
+##$ISA_orig_dataset=( 256 )
+</opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/12/pdata/1>
+##$ISA_debug=No
+##END=
+$$ File finished by PARX at 2016-07-18 13:03:11.555 +0200

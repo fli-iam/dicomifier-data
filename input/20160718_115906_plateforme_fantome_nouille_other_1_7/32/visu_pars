@@ -1,0 +1,145 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-19 10:01:41.334 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/32/visu_pars
+$$ process /opt/PV6.0.1/prog/mod/acq_out
+##$VisuVersion=3
+##$VisuUid=( 65 )
+<2.16.756.5.5.100.1333920868.6010.1468915299.1>
+##$VisuCreator=( 65 )
+<ParaVision>
+##$VisuCreatorVersion=( 65 )
+<6.0.1>
+##$VisuCreationDate=<2016-07-19T10:01:39,335+0200>
+##$VisuInstanceModality=( 65 )
+<MR>
+##$VisuCoreFrameCount=1
+##$VisuCoreDim=2
+##$VisuCoreSize=( 2 )
+256 256
+##$VisuCoreDimDesc=( 2 )
+spatial spatial
+##$VisuCoreExtent=( 2 )
+35 35
+##$VisuCoreFrameThickness=( 1 )
+1.16
+##$VisuCoreUnits=( 2, 65 )
+<mm> <mm>
+##$VisuCoreOrientation=( 1, 9 )
+1 0 0 0 1 0 0 0 1
+##$VisuCorePosition=( 1, 3 )
+-17.5921655 -14.41244 0
+##$VisuCoreDataMin=( 1 )
+7.52324036049697
+##$VisuCoreDataMax=( 1 )
+32766.5
+##$VisuCoreDataOffs=( 1 )
+0
+##$VisuCoreDataSlope=( 1 )
+0.000482214334804379
+##$VisuCoreFrameType=( 1 )
+MAGNITUDE_IMAGE
+##$VisuCoreSlicePacksDef=(-1, 1)
+##$VisuCoreSlicePacksSlices=( 1 )
+(0, 1)
+##$VisuCoreSlicePacksSliceDist=( 1 )
+1.16
+##$VisuCoreWordType=_16BIT_SGN_INT
+##$VisuCoreByteOrder=littleEndian
+##$VisuSubjectName=( 65 )
+<fantome-nouille>
+##$VisuSubjectId=( 65 )
+<plateforme^fantome-nouille_other>
+##$VisuSubjectUid=( 65 )
+<2.16.756.5.5.100.1333920868.10258.1459253896.69>
+##$VisuSubjectInstanceCreationDate=(1459253896, 790, 120)
+##$VisuSubjectBirthDate=( 9 )
+<20160329>
+##$VisuSubjectSex=UNKNOWN
+##$VisuSubjectComment=( 2048 )
+<pate alphabet coller au piston d'une seringue 50ml dans NaCl.\
+V: ventral\
+D: dorsal\
+R: droite\
+L: gauche\
+H: tete>
+##$VisuSubjectType=OtherAnimal
+##$VisuStudyUid=( 65 )
+<2.16.756.5.5.100.1333920868.10495.1468835946.106>
+##$VisuStudyDate=<2016-07-18T11:59:06,071+0200>
+##$VisuStudyId=( 65 )
+<plateforme^18062016>
+##$VisuStudyNumber=7
+##$VisuSubjectWeight=0.001
+##$VisuStudyReferringPhysician=( 65 )
+<po>
+##$VisuStudyDescription=( 2048 )
+<\
+>
+##$VisuExperimentNumber=32
+##$VisuProcessingNumber=1
+##$VisuSeriesDate=<2016-07-19T10:01:39,335+0200>
+##$VisuSubjectPosition=Head_Prone
+##$VisuSeriesTypeId=( 65 )
+<ACQ_USER_PVM>
+##$VisuManufacturer=( 65 )
+<Bruker BioSpin MRI GmbH>
+##$VisuAcqSoftwareVersion=( 65 )
+<6.0.1>
+##$VisuInstitution=( 65 )
+<ICUBE Strasbourg>
+##$VisuStation=( 65 )
+<Biospec >
+##$VisuSystemOrderNumber=( 65 )
+<10112043>
+##$VisuAcqDate=<2016-07-19T09:57:19,665+0200>
+##$VisuAcqEchoTrainLength=1
+##$VisuAcqSequenceName=( 40 )
+<User:cpoMSME>
+##$VisuAcqNumberOfAverages=1
+##$VisuAcqImagingFrequency=300.332440377798
+##$VisuAcqImagedNucleus=( 8 )
+<1H>
+##$VisuAcqRepetitionTime=( 1 )
+1000
+##$VisuAcqPhaseEncSteps=256
+##$VisuAcqPixelBandwidth=195.3125
+##$VisuAcqFlipAngle=90
+##$VisuAcqSize=( 2 )
+256 256
+##$VisuAcqImageSizeAccellerated=No
+##$VisuAcqGradEncoding=( 2 )
+read_enc phase_enc
+##$VisuAcqEchoTime=( 1 )
+20
+##$VisuAcquisitionProtocol=( 65 )
+<cpoMSME>
+##$VisuAcqScanTime=256000
+##$VisuAcqAntiAlias=( 2 )
+1 1
+##$VisuAcqEchoSequenceType=Both
+##$VisuAcqSpinsVelocityEncoded=No
+##$VisuAcqHasTimeOfFlightContrast=No
+##$VisuAcqIsEpiSequence=No
+##$VisuAcqSpectralSuppression=NoSuppression
+##$VisuAcqKSpaceTraversal=RectilinearTraversal
+##$VisuAcqEncodingOrder=( 2 )
+LinearEncoding LinearEncoding
+##$VisuAcqKSpaceTrajectoryCnt=1
+##$VisuAcqKSpaceFiltering=( 2 )
+NO_WDW NO_WDW
+##$VisuAcqFlowCompensation=FlowNone
+##$VisuAcqSpoiling=GradientSpoiled
+##$VisuAcqPartialFourier=( 2 )
+1 1
+##$VisuAcqParallelReductionFactor=( 2 )
+1 1
+##$VisuAcqMagnetizationTransfer=No
+##$VisuAcqBloodSignalNulling=No
+##$VisuCardiacSynchUsed=No
+##$VisuRespSynchUsed=No
+##END=
+$$ File finished by PARX at 2016-07-19 10:01:41.334 +0200

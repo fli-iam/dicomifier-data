@@ -1,0 +1,149 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-18 12:56:04.525 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/11/pdata/2/visu_pars
+$$ process /opt/PV6.0.1/prog/mod/xtip
+##$VisuVersion=3
+##$VisuUid=( 65 )
+<2.16.756.5.5.100.1333920868.32058.1468839364.122>
+##$VisuCreator=( 65 )
+<ParaVision;xtip>
+##$VisuCreatorVersion=( 65 )
+<6.0.1;6.0.1>
+##$VisuCreationDate=<2016-07-18T12:56:04,525+0200>
+$$ @vis= VisuVersion VisuUid VisuCreator VisuCreatorVersion VisuCreationDate
+##$VisuCoreFrameCount=45
+##$VisuCoreDim=2
+##$VisuCoreSize=( 2 )
+192 160
+##$VisuCoreDimDesc=( 2 )
+spatial spatial
+$$ @vis= VisuInstance VisuCoreFrameCount VisuCoreDim VisuCoreSize
+##$VisuCoreExtent=( 2 )
+40 35
+##$VisuCoreFrameThickness=( 1 )
+1
+##$VisuCoreUnits=( 2, 65 )
+<mm> <mm>
+##$VisuCoreOrientation=( 9, 9 )
+1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 
+0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0 
+0 0 1
+$$ @vis= VisuCoreDimDesc VisuCoreExtent VisuCoreFrameThickness VisuCoreUnits
+##$VisuCorePosition=( 9, 3 )
+-19.354839 -13.95161 -4.46083 -19.354839 -13.95161 -3.46083 -19.354839 
+-13.95161 -2.46083 -19.354839 -13.95161 -1.46083 -19.354839 -13.95161 
+-0.46083 -19.354839 -13.95161 0.53917 -19.354839 -13.95161 1.53917 -19.354839 
+-13.95161 2.53917 -19.354839 -13.95161 3.53917
+##$VisuCoreDataMin=( 45 )
+0 0 0 0 4146 0 0 0 0 1243 0 0 0 0 8209 0 0 0 0 693 0 0 0 0 9873 0 0 0 0 5318 
+0 0 0 0 10169 0 0 0 0 5875 0 0 0 0 18316
+##$VisuCoreDataMax=( 45 )
+1280032256 476315968 1448958080 746740288 1431788288 1511536768 704166912 
+1422311552 683092800 1330913280 1397320704 838156096 1413005696 537809280 
+1250037376 2116466816 1234926464 1342654720 465586048 1697076096 1483990912 
+1008778688 1187949312 885349696 1336507648 1534936576 834669312 1198155904 
+705997376 1208415488 1793794304 1086698112 1914816256 447125664 1316760704 
+1556770432 1545766528 1202871808 530853696 1479991808 1520504960 1086858368 
+1929872000 1856673152 1411720960
+##$VisuCoreDataOffs=( 45 )
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0
+$$ @vis= VisuCoreOrientation VisuCorePosition VisuCoreDataMin VisuCoreDataMax
+##$VisuCoreDataSlope=( 45 )
+1.19209289550781e-07 1.19209289550781e-07 0.0001220703125 0.0001220703125 
+3.72529029846191e-09 1.19209289550781e-07 1.19209289550781e-07 
+3.0517578125e-05 3.0517578125e-05 3.72529029846191e-09 5.96046447753906e-08 
+5.96046447753906e-08 3.0517578125e-05 3.0517578125e-05 3.72529029846191e-09 
+5.96046447753906e-08 5.96046447753906e-08 3.0517578125e-05 3.0517578125e-05 
+1.49011611938477e-08 5.96046447753906e-08 5.96046447753906e-08 
+1.52587890625e-05 1.52587890625e-05 7.45058059692383e-09 5.96046447753906e-08 
+5.96046447753906e-08 1.52587890625e-05 1.52587890625e-05 3.72529029846191e-09 
+5.96046447753906e-08 5.96046447753906e-08 6.103515625e-05 6.103515625e-05 
+3.72529029846191e-09 5.96046447753906e-08 5.96046447753906e-08 
+3.0517578125e-05 3.0517578125e-05 3.72529029846191e-09 5.96046447753906e-08 
+5.96046447753906e-08 1.52587890625e-05 1.52587890625e-05 3.72529029846191e-09
+##$VisuCoreDataUnits=( 5, 65 )
+<> <> <ms> <ms> <>
+##$VisuCoreFrameType=( 1 )
+REAL_IMAGE
+$$ @vis= VisuCoreDataOffs VisuCoreDataSlope VisuCoreDataUnits
+##$VisuFGElemComment=( 5, 65 )
+<signal intensity> <std dev of signal intensity> <T1 relaxation time> <std 
+dev of T1 relaxation time> <std dev of the fit>
+##$VisuCoreSlicePacksDef=(1, 1)
+##$VisuCoreSlicePacksSlices=( 1 )
+(0, 9)
+$$ @vis= VisuCoreFrameType VisuFGElemComment VisuCoreSlicePacksDef
+##$VisuCoreSlicePacksSliceDist=( 1 )
+0
+##$VisuCoreWordType=_32BIT_SGN_INT
+$$ @vis= VisuCoreSlicePacksSlices VisuCoreSlicePacksSliceDist VisuCore
+##$VisuCoreByteOrder=littleEndian
+##$VisuFGOrderDescDim=2
+##$VisuFGOrderDesc=( 2 )
+(5, <FG_ISA>, <T1 saturation recovery>, 0, 2) (9, <FG_SLICE>, <>, 2, 2)
+$$ @vis= VisuCoreWordType VisuCoreByteOrder VisuPixel VisuFGOrderDescDim
+##$VisuGroupDepVals=( 4 )
+(<VisuCoreDataUnits>, 0) (<VisuFGElemComment>, 0) (<VisuCoreOrientation>, 0) 
+(<VisuCorePosition>, 0)
+##$VisuSubjectName=( 65 )
+<fantome-nouille>
+##$VisuSubjectId=( 65 )
+<plateforme^fantome-nouille_other>
+$$ @vis= VisuFGOrderDesc VisuGroupDepVals VisuFrameOrderDesc VisuSubjectName
+##$VisuSubjectUid=( 65 )
+<2.16.756.5.5.100.1333920868.10258.1459253896.69>
+##$VisuSubjectInstanceCreationDate=(1459253896, 790, 120)
+##$VisuSubjectBirthDate=( 9 )
+<20160329>
+$$ @vis= VisuSubjectId VisuSubjectUid VisuSubjectInstanceCreationDate
+##$VisuSubjectSex=UNKNOWN
+##$VisuSubjectComment=( 2048 )
+<pate alphabet coller au piston d'une seringue 50ml dans NaCl.\
+V: ventral\
+D: dorsal\
+R: droite\
+L: gauche\
+H: tete>
+##$VisuSubjectType=OtherAnimal
+$$ @vis= VisuSubjectBirthDate VisuSubjectSex VisuSubjectComment
+##$VisuStudyUid=( 65 )
+<2.16.756.5.5.100.1333920868.10495.1468835946.106>
+##$VisuStudyDate=<2016-07-18T11:59:06,071+0200>
+##$VisuStudyId=( 65 )
+<plateforme^18062016>
+##$VisuStudyNumber=7
+$$ @vis= VisuSubjectType VisuSubject VisuStudyUid VisuStudyDate VisuStudyId
+##$VisuSubjectWeight=0.001
+##$VisuStudyReferringPhysician=( 65 )
+<po>
+##$VisuStudyDescription=( 2048 )
+<\
+>
+$$ @vis= VisuStudyNumber VisuSubjectWeight VisuStudyReferringPhysician
+##$VisuExperimentNumber=11
+##$VisuProcessingNumber=2
+$$ @vis= VisuStudyDescription VisuStudy VisuExperimentNumber
+##$VisuSeriesDate=<2016-07-18T12:56:04,525+0200>
+##$VisuSubjectPosition=Head_Prone
+##$VisuSeriesTypeId=( 65 )
+<DERIVED_ISA>
+$$ @vis= VisuProcessingNumber VisuSeriesDate VisuSubjectPosition
+##$VisuSeriesComment=( 65 )
+<Parametric image for T1 saturation recovery produced from /opt/P>
+##$VisuSeriesReferenceUid=( 65 )
+<2.16.756.5.5.100.1333920868.31289.1468839354.1>
+##$VisuSeriesReferenceTypeId=( 65 )
+<ACQ_BRUKER_PVM>
+$$ @vis= VisuSeriesTypeId VisuSeriesComment VisuSeriesReferenceUid
+$$ @vis= VisuSeriesReferenceTypeId VisuSeries VisuCoilReceive
+##$VisuManufacturer=( 65 )
+<Bruker BioSpin MRI GmbH>
+$$ @vis= VisuCoilTransmit VisuContrastAgent VisuManufacturer VisuEquipment
+$$ @vis= VisuAcquisition VisuMpi VisuDepricated Visu
+##END=
+$$ File finished by PARX at 2016-07-18 12:56:04.525 +0200

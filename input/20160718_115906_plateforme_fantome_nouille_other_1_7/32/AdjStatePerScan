@@ -1,0 +1,26 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-19 09:57:19.378 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/32/AdjStatePerScan
+$$ process /opt/PV6.0.1/prog/mod/pipe
+##$AdjScanStateCompleted=Yes
+##$AdjScanStateAdjName=( 2, 128 )
+<SHIM_Scan> <RCVR_Standard>
+##$AdjScanStateCategory=( 2 )
+SHIM RCVR
+##$AdjScanStateTime=( 2 )
+<2016-07-19T09:57:05,444+0200> <2016-07-19T09:57:05,626+0200>
+##$AdjScanStateExpno=( 2 )
+32 32
+##$AdjScanStateState=( 2 )
+adj_successful adj_successful
+##$AdjScanStateResultId=( 2, 65 )
+<2.16.756.5.5.100.1333920868.5782.1468915025.33> 
+<2.16.756.5.5.100.1333920868.5782.1468915025.34>
+##$AdjScanStateMethod=( 2, 128 )
+<Bruker:AdjShim> <User:cpoMSME>
+##END=
+$$ File finished by PARX at 2016-07-19 09:57:19.378 +0200

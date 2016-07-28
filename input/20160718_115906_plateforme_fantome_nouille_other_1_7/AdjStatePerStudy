@@ -1,0 +1,108 @@
+##TITLE=Parameter List, ParaVision 6.0.1
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=po
+$$ 2016-07-19 09:57:19.377 +0200  po@var.u-strasbg.fr
+$$ /opt/PV6.0.1/data/po/20160718_115906_plateforme_fantome_nouille_other_1_7/AdjStatePerStudy
+$$ process /opt/PV6.0.1/prog/mod/pipe
+##$AdjStudyStateCompleted=Yes
+##$AdjStudyStateResetNdx=23
+##$AdjStudyStateAdjName=( 27, 128 )
+<BASIC_Shim> <FREQ_Standard> <SHIM_Study> <TRANSM_Standard> <BASIC_Shim> 
+<FREQ_Standard> <SHIM_Study> <TRANSM_Standard> <B0Map_Standard> <SHIM_Study> 
+<BASIC_Shim> <BASIC_Shim> <FREQ_Standard> <SHIM_Study> <TRANSM_Standard> 
+<BASIC_Shim> <FREQ_Standard> <SHIM_Study> <TRANSM_Standard> <BASIC_Shim> 
+<FREQ_Standard> <SHIM_Study> <TRANSM_Standard> <BASIC_Shim> <FREQ_Standard> 
+<SHIM_Study> <TRANSM_Standard>
+##$AdjStudyStateCategory=( 27 )
+OTHERADJ FREQ SHIM TRANSM OTHERADJ FREQ SHIM TRANSM OTHERADJ SHIM OTHERADJ 
+OTHERADJ FREQ SHIM TRANSM OTHERADJ FREQ SHIM TRANSM OTHERADJ FREQ SHIM TRANSM 
+OTHERADJ FREQ SHIM TRANSM
+##$AdjStudyStateTime=( 27 )
+<2016-07-18T12:01:46,555+0200> <2016-07-18T12:01:46,711+0200> 
+<2016-07-18T12:01:56,099+0200> <2016-07-18T12:02:23,618+0200> 
+<2016-07-18T13:52:14,663+0200> <2016-07-18T13:52:14,861+0200> 
+<2016-07-18T13:52:26,386+0200> <2016-07-18T13:52:52,805+0200> 
+<2016-07-18T13:57:03,420+0200> <2016-07-18T14:01:47,208+0200> 
+<2016-07-18T14:24:30,053+0200> <2016-07-18T14:30:23,636+0200> 
+<2016-07-18T14:30:23,811+0200> <2016-07-18T14:30:31,941+0200> 
+<2016-07-18T14:31:04,950+0200> <2016-07-18T16:07:18,501+0200> 
+<2016-07-18T16:07:18,732+0200> <2016-07-18T16:07:26,848+0200> 
+<2016-07-18T16:08:00,564+0200> <2016-07-18T16:11:49,810+0200> 
+<2016-07-18T16:11:50,038+0200> <2016-07-18T16:12:02,412+0200> 
+<2016-07-18T16:12:29,381+0200> <2016-07-19T09:49:51,652+0200> 
+<2016-07-19T09:49:51,875+0200> <2016-07-19T09:50:03,737+0200> 
+<2016-07-19T09:50:29,519+0200>
+##$AdjStudyStateExpno=( 27 )
+1 1 1 1 17 17 17 17 19 18 23 24 24 24 24 26 26 26 26 27 27 27 27 31 31 31 31
+##$AdjStudyStateState=( 27 )
+adj_successful adj_successful adj_successful adj_successful adj_successful 
+adj_successful adj_successful adj_successful adj_successful adj_failed 
+adj_successful adj_successful adj_successful adj_successful adj_successful 
+adj_successful adj_successful adj_successful adj_successful adj_successful 
+adj_successful adj_successful adj_successful adj_successful adj_successful 
+adj_successful adj_successful
+##$AdjStudyStateResultId=( 27, 65 )
+<2.16.756.5.5.100.1333920868.18723.1468836106.6> 
+<2.16.756.5.5.100.1333920868.18723.1468836106.7> 
+<2.16.756.5.5.100.1333920868.18723.1468836106.8> 
+<2.16.756.5.5.100.1333920868.18723.1468836106.9> 
+<2.16.756.5.5.100.1333920868.23643.1468842734.10> 
+<2.16.756.5.5.100.1333920868.23643.1468842734.11> 
+<2.16.756.5.5.100.1333920868.23643.1468842734.12> 
+<2.16.756.5.5.100.1333920868.23643.1468842734.13> 
+<2.16.756.5.5.100.1333920868.26134.1468843012.13> 
+<2.16.756.5.5.100.1333920868.5328.1468843307.15> 
+<2.16.756.5.5.100.1333920868.13481.1468844669.16> 
+<2.16.756.5.5.100.1333920868.16354.1468845023.17> 
+<2.16.756.5.5.100.1333920868.16354.1468845023.18> 
+<2.16.756.5.5.100.1333920868.16354.1468845023.19> 
+<2.16.756.5.5.100.1333920868.16354.1468845023.20> 
+<2.16.756.5.5.100.1333920868.2222.1468850838.21> 
+<2.16.756.5.5.100.1333920868.2222.1468850838.22> 
+<2.16.756.5.5.100.1333920868.2222.1468850838.23> 
+<2.16.756.5.5.100.1333920868.2222.1468850838.24> 
+<2.16.756.5.5.100.1333920868.5985.1468851109.25> 
+<2.16.756.5.5.100.1333920868.5985.1468851109.26> 
+<2.16.756.5.5.100.1333920868.5985.1468851109.27> 
+<2.16.756.5.5.100.1333920868.5985.1468851109.28> 
+<2.16.756.5.5.100.1333920868.3574.1468914591.29> 
+<2.16.756.5.5.100.1333920868.3574.1468914591.30> 
+<2.16.756.5.5.100.1333920868.3574.1468914591.31> 
+<2.16.756.5.5.100.1333920868.3574.1468914591.32>
+##$AdjStudyStateMethod=( 27, 128 )
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG> 
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG> 
+<Bruker:FieldMap> <Bruker:AdjShim> <Bruker:AdjTuneupShim> 
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG> 
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG> 
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG> 
+<Bruker:AdjTuneupShim> <Bruker:AdjSf> <Bruker:AdjShim> <Bruker:AdjRefG>
+##$AdjStudyStateMethodContext=( 27, 1024 )
+<> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> <> 
+<>
+##$AdjStudyStateHwChainNdxs=( 27 )
+(0, 0) (0, 0) (0, 1) (1, 1) (2, 0) (2, 0) (2, 1) (3, 1) (4, 1) (5, 0) (5, 0) 
+(5, 0) (5, 0) (5, 1) (6, 1) (7, 0) (7, 0) (7, 1) (8, 1) (9, 0) (9, 0) (9, 1) 
+(10, 1) (11, 0) (11, 0) (11, 1) (12, 1)
+##$AdjStudyStateHwChains=( 13 )
+((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086).312252.no>) 
+((TRANS_CHAIN, -2), <2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 
+2 1H  0>) ((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086)
+.312252.no>) ((TRANS_CHAIN, -2), 
+<2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 2 1H  0>) 
+((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086).312252.no>) 
+((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086).312252.no>) 
+((TRANS_CHAIN, -2), <2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 
+2 1H  0>) ((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086)
+.312252.no>) ((TRANS_CHAIN, -2), 
+<2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 2 1H  0>) 
+((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086).312252.no>) 
+((TRANS_CHAIN, -2), <2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 
+2 1H  0>) ((SHIM_CHAIN, -1), <B-GA12SHP FOR BC70/30 (BFR W3307165/0086)
+.312252.no>) ((TRANS_CHAIN, -2), 
+<2.16.756.5.5.100.1333920868.991.1447775644.3 -2 2 2 2 1 2 1H  0>)
+##$AdjStudyListConfigTime=1445354295
+##END=
+$$ File finished by PARX at 2016-07-19 09:57:19.378 +0200

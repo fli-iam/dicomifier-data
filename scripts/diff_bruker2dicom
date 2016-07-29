@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import filecmp
+import logging
 import os
 import shutil
 import subprocess
@@ -9,59 +10,68 @@ import tempfile
 
 def main():
     input_ = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..", "input"))
+        os.path.join(
+            os.path.dirname(__file__), "..", "input",
+            "20160718_115906_plateforme_fantome_nouille_other_1_7"))
     baseline = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..", "baseline"))
+        os.path.join(
+            os.path.dirname(__file__), "..", "baseline",
+            "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"))
+    test = tempfile.mkdtemp()
     
+    try:
+        try:
+            subprocess.check_call([
+                "bruker2dicom", "convert", "--dicomdir", input_, test])
+        except subprocess.CalledProcessError as e:
+            print e.output
+            return
+        
+        diff(baseline, test)
+    finally:
+        shutil.rmtree(test)
+
+def diff(baseline, test):
     dicomdiff = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "dicomdiff"))
     
-    directory = tempfile.mkdtemp()
-    try:
-        test_root = os.path.join(directory, "dicom")
-        try:
-            subprocess.check_call([
-                "bruker2dicom", "convert", "--dicomdir", 
-                os.path.join(
-                    input_, 
-                    "20160718_115906_plateforme_fantome_nouille_other_1_7"),
-                test_root])
-        except subprocess.CalledProcessError as e:
-            print e
-            return
-        
-        baseline_root = os.path.join(
-            baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm")
-        
-        for pathname, dirnames, filenames in os.walk(baseline_root):
-            relative_pathname = pathname[len(os.path.join(baseline_root, "")):]
-            test_pathname = os.path.join(test_root, relative_pathname)
-            for filename in filenames:
-                baseline_filename = os.path.join(pathname, filename)
-                test_filename = os.path.join(test_pathname, filename)
-                if not os.path.isfile(os.path.join(test_pathname, filename)):
-                    print "{} missing in test".format(
+    # Walk the baseline to find missing missing in test and different from test
+    for pathname, dirnames, filenames in os.walk(baseline):
+        relative_pathname = pathname[len(os.path.join(baseline, "")):]
+        test_pathname = os.path.join(test, relative_pathname)
+        for filename in filenames:
+            if filename == "DICOMDIR":
+                logging.warning("Not testing DICOMDIR")
+                continue
+            
+            baseline_filename = os.path.join(pathname, filename)
+            test_filename = os.path.join(test_pathname, filename)
+            if not os.path.isfile(os.path.join(test_pathname, filename)):
+                print "{} missing in test".format(
+                    os.path.join(relative_pathname, filename))
+            else:
+                try:
+                    subprocess.check_output([
+                        dicomdiff, "-H",
+                        "-x", "MediaStorageSOPInstanceUID", 
+                        "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
+                        "-x", "InstanceCreationTime",
+                        baseline_filename, test_filename],
+                        stderr=subprocess.STDOUT)
+                except subprocess.CalledProcessError as e:
+                    print "Differences on {}".format(
                         os.path.join(relative_pathname, filename))
-                else:
-                    try:
-                        stdout = subprocess.check_output([
-                            dicomdiff, "-H",
-                            "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
-                            "-x", "InstanceCreationTime",
-                            baseline_filename, test_filename],
-                            stderr=subprocess.STDOUT)
-                    except subprocess.CalledProcessError:
-                        print os.path.join(relative_pathname, filename)
-                        print stdout
-        for pathname, dirnames, filenames in os.walk(test_root):
-            relative_pathname = pathname[len(os.path.join(test_root, "")):]
-            baseline_pathname = os.path.join(baseline_root, relative_pathname)
-            for filename in filenames:
-                if not os.path.isfile(os.path.join(baseline_pathname, filename)):
-                    print "{} missing in baseline".format(
-                        os.path.join(relative_pathname, filename))
-    finally:
-        shutil.rmtree(directory)
+                    print e.output
+    
+    # Walk the test to find files missing in baseline (the difference between 
+    # files has already been tested).
+    for pathname, dirnames, filenames in os.walk(test):
+        relative_pathname = pathname[len(os.path.join(test, "")):]
+        baseline_pathname = os.path.join(baseline, relative_pathname)
+        for filename in filenames:
+            if not os.path.isfile(os.path.join(baseline_pathname, filename)):
+                print "{} missing in baseline".format(
+                    os.path.join(relative_pathname, filename))
 
 if __name__ == "__main__":
     sys.exit(main())

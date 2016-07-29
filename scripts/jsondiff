@@ -32,8 +32,8 @@ def main():
             message = str(new_value)
         
         print "{}: {}".format("/".join(str(x) for x in path), message)
-    
-    return (len(differences) == 0)
+
+    return 0 if (len(differences) == 0) else 1
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -54,7 +54,7 @@ def main():
         
         print "{}: {}".format("/".join(pretty_path), message)
     
-    return (len(differences) == 0)
+    return 0 if (len(differences) == 0) else 1
 
 if __name__ == "__main__":
     sys.exit(main())

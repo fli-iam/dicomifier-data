@@ -1,0 +1,79 @@
+#!/usr/bin/env python
+
+import filecmp
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+
+def main():
+    input_ = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__), "..", "baseline",
+            "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"))
+    baseline = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__), "..", "baseline",
+            "20160718_115906_plateforme_fantome_nouille_other_1_7.nii"))
+    test = tempfile.mkdtemp()
+    
+    try:
+        try:
+            subprocess.check_call(["dicom2nifti", input_, test])
+        except subprocess.CalledProcessError as e:
+            print e.output
+            return
+        
+        baseline_root = os.path.join(
+            baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.nii")
+        diff(baseline, test)
+    finally:
+        shutil.rmtree(test)
+        
+def diff(baseline, test):
+    jsondiff = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "jsondiff"))
+    
+    # Walk the baseline to find missing missing in test and different from test
+    for pathname, dirnames, filenames in os.walk(baseline):
+        relative_pathname = pathname[len(os.path.join(baseline, "")):]
+        test_pathname = os.path.join(test, relative_pathname)
+        for filename in filenames:
+            baseline_filename = os.path.join(pathname, filename)
+            test_filename = os.path.join(test_pathname, filename)
+            if not os.path.isfile(os.path.join(test_pathname, filename)):
+                print "{} missing in test".format(
+                    os.path.join(relative_pathname, filename))
+            else:
+                if filename.endswith(".json"):
+                    try:
+                        subprocess.check_output([
+                            jsondiff, 
+                            baseline_filename, test_filename],
+                            stderr=subprocess.STDOUT)
+                    except subprocess.CalledProcessError as e:
+                        print "Differences on {}".format(
+                            os.path.join(relative_pathname, filename))
+                        print e.output
+                else:
+                    try:
+                        subprocess.check_output(
+                            ["diff", baseline_filename, test_filename],
+                            stderr=subprocess.STDOUT)
+                    except subprocess.CalledProcessError as e:
+                        print "Differences on {}".format(
+                            os.path.join(relative_pathname, filename))
+    
+    # Walk the test to find files missing in baseline (the difference between 
+    # files has already been tested).
+    for pathname, dirnames, filenames in os.walk(test):
+        relative_pathname = pathname[len(os.path.join(test, "")):]
+        baseline_pathname = os.path.join(baseline, relative_pathname)
+        for filename in filenames:
+            if not os.path.isfile(os.path.join(baseline_pathname, filename)):
+                print "{} missing in baseline".format(
+                    os.path.join(relative_pathname, filename))
+                    
+if __name__ == "__main__":
+    sys.exit(main())

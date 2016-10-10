@@ -56,6 +56,16 @@ def diff(baseline, test):
                         print "Differences on {}".format(
                             os.path.join(relative_pathname, filename))
                         print e.output
+                elif filename.endswith(".nii") or filename.endswith(".nii.gz"):
+                    try:
+                        subprocess.check_output([
+                            "nifti_tool", "-diff_hdr", "-infiles",
+                            baseline_filename, test_filename], 
+                            stderr=subprocess.STDOUT)
+                    except subprocess.CalledProcessError as e:
+                        print "Differences on {}".format(
+                            os.path.join(relative_pathname, filename))
+                        print e.output
                 else:
                     try:
                         subprocess.check_output(

@@ -1,3 +1,5 @@
+import operator
+
 def get_differences(a, b, exclusions=None, parent_path=None):
     """Return the list of differences between two lists or two dicts."""
     
@@ -34,7 +36,12 @@ def get_differences(a, b, exclusions=None, parent_path=None):
                         get_differences(item_a, item_b, exclusions, path))
                 else:
                     # Scalar values
-                    if item_a != item_b:
+                    is_equal = None
+                    if isinstance(item_a, float):
+                        is_equal = lambda x,y: abs(x-y)<1e-6
+                    else:
+                        is_equal = operator.eq
+                    if not is_equal(item_a, item_b):
                         differences.append((path, b[field]))
     
     return differences

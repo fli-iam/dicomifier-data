@@ -1,0 +1,45 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=simoesbl
+$$ Wed May 11 13:43:01 2016 CEST (UT+2h)  simoesbl
+$$ /gin5-Warhol_Data/data/simoesbl/nmr/lb_140721.Bx1/subject
+##$SUBJECT_version_nr=2
+##$SUBJECT_id=( 60 )
+<lb_140721>
+##$SUBJECT_patient_instance_uid=( 65 )
+<2.16.756.5.5.100.3611280983.32229.1462966980.3532>
+##$SUBJECT_name_string=( 64 )
+<test_irm>
+$$ @vis= SUBJECT_version_nr SUBJECT_id SUBJECT_patient_instance_uid
+##$SUBJECT_name=(<>, <test_irm>)
+##$SUBJECT_dbirth=( 12 )
+<>
+##$SUBJECT_type=Human
+##$SUBJECT_sex=( 8 )
+<female>
+$$ @vis= SUBJECT_name_string SUBJECT_name SUBJECT_dbirth SUBJECT_type
+##$SUBJECT_sex_human=Female
+##$SUBJECT_study_name=( 64 )
+<dataset_orient_H-S>
+##$SUBJECT_study_nr=1
+##$SUBJECT_study_instance_uid=( 65 )
+<2.16.756.5.5.100.3611280983.32229.1462966980.3533>
+$$ @vis= SUBJECT_sex SUBJECT_sex_human SUBJECT_study_name SUBJECT_study_nr
+##$SUBJECT_size=0.001
+##$SUBJECT_weight=5
+##$SUBJECT_pos_valid=Yes
+$$ @vis= SUBJECT_study_instance_uid SUBJECT_size SUBJECT_weight
+##$SUBJECT_location=( 64 )
+<B_TEMPLATES>
+##$SUBJECT_entry=SUBJ_ENTRY_HeadFirst
+##$SUBJECT_position=SUBJ_POS_Supine
+##$SUBJECT_date=( 21 )
+<13:43:00 11 May 2016>
+$$ @vis= SUBJECT_pos_valid SUBJECT_location SUBJECT_entry SUBJECT_position
+##$SUBJECT_abs_date=1462966980
+##$SUBJECT_study_coil_config_file=( 512 )
+<HWIDS_T9885V3_0025_T11203V3_0027>
+$$ @vis= SUBJECT_date SUBJECT_abs_date SUBJECT
+##END=

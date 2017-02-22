@@ -1,0 +1,24 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=simoesbl
+$$ Wed May 11 13:55:00 2016 CEST (UT+2h)  simoesbl
+$$ /gin5-Warhol_Data/data/simoesbl/nmr/lb_140721.Bx1/1/pdata/1/roi
+##$ROI_version=( 20 )
+<Version 2.0>
+##$ROI_n=1
+##$ROI_par=( 1 )
+(RoiSquare, <>, 4, 0, 0, -1)
+##$ROI_dpar=( 4 )
+0.5 0.5 0.1 0.1
+##$ROI_dpar_off=( 1 )
+0
+##$ROI_cpar_off=( 1 )
+0
+##$ROI_ndx=0
+##$ROI_dpar_ndx=( 4 )
+0.5 0.5 0.1 0.1
+##$ROI_cpar_ndx=( 1 )
+<>
+##END=

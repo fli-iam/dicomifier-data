@@ -1,0 +1,13 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=simoesbl
+$$ Wed May  4 16:06:27 2016 CEST (UT+2h)  simoesbl
+$$ /gin5-Warhol_Data/data/simoesbl/nmr/lb_140721.Bq1/AdjResult/2.16.756.5.5.100.3611280983.31990.1462370748.68/result.jcamp
+##$ACQ_BF=( 1 )
+(<1H>, 200.335119165167)
+##$PVM_TuneShimFreqOffs=( 1 )
+-95.3008985808079
+##$PVM_StudyShim=(0, 835, 0, 0, 0, -82, 328, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+##END=

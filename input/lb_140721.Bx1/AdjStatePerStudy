@@ -1,0 +1,35 @@
+##TITLE=Parameter List
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=simoesbl
+$$ Wed May 11 14:10:35 2016 CEST (UT+2h)  simoesbl
+$$ /gin5-Warhol_Data/data/simoesbl/nmr/lb_140721.Bx1/AdjStatePerStudy
+##$AdjStudyStateCompleted=Yes
+##$AdjStudyStateResetNdx=0
+##$AdjStudyStateAdjName=( 3, 128 )
+<FREQ_Standard> <SHIM_Standard> <TRANSM_Standard>
+##$AdjStudyStateCategory=( 3 )
+FREQ SHIM TRANSM
+##$AdjStudyStateAdjustPars=( 3, 1024 )
+<ACQ_BF> <PVM_StudyShim> <PVM_StudyRefAtt>
+##$AdjStudyStateTime=( 3, 21 )
+<13:45:09 11 May 2016> <13:45:23 11 May 2016> <13:45:52 11 May 2016>
+##$AdjStudyStateExpno=( 3 )
+1 1 1
+##$AdjStudyStateState=( 3 )
+adj_successful adj_successful adj_successful
+##$AdjStudyStateResultId=( 3, 65 )
+<> <2.16.756.5.5.100.3611280983.30710.1462967109.64> <
+2.16.756.5.5.100.3611280983.30710.1462967109.65>
+##$AdjStudyStateMethod=( 3, 128 )
+<AdjSf> <AdjShim> <AdjRefG>
+##$AdjStudyStateMethodContext=( 3, 128 )
+<> <> <>
+##$AdjStudyStateHwChainNdxs=( 3 )
+(0, 0) (0, 1) (1, 1)
+##$AdjStudyStateHwChains=( 2 )
+((SHIM_CHAIN, -1), <S116_W3305565_0012.328341>) ((TRANS_CHAIN, -2), <
+HWIDS_T9885V3_0025_T11203V3_0027 -2 2 2 2 1 1 1H  1212501678>)
+##$AdjStudyListConfigTime=1190094339
+##END=

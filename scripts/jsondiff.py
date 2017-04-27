@@ -38,7 +38,9 @@ def get_differences(a, b, exclusions=None, parent_path=None):
                     # Scalar values
                     is_equal = None
                     if isinstance(item_a, float):
-                        is_equal = lambda x,y: abs(x-y)<1e-6
+                        is_equal = lambda x,y: (
+                            ((-1e-5) < (x-y)/x < (+1e-5)) if x != 0
+                            else abs(x-y) < 1e-6)
                     else:
                         is_equal = operator.eq
                     if not is_equal(item_a, item_b):

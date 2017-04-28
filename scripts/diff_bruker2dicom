@@ -56,6 +56,7 @@ def diff(baseline, test):
                         "-x", "MediaStorageSOPInstanceUID", 
                         "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
                         "-x", "InstanceCreationTime",
+                        "-x", "SpecificCharacterSet",
                         baseline_filename, test_filename],
                         stderr=subprocess.STDOUT)
                 except subprocess.CalledProcessError as e:

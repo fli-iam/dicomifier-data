@@ -31,13 +31,7 @@ def main():
     differences.extend(jsondiff.get_differences(a[1], b[1], arguments.exclude))
     
     for difference in differences:
-        if len(difference) == 1:
-            path = difference[0]
-            message = "deleted"
-        else:
-            path, new_value = difference
-            message = str(new_value)
-        
+        path = difference[0]
         pretty_path = []
         for element in path:
             if element in ["Value", "InlineBinary", "Alphabetic"]:
@@ -52,7 +46,13 @@ def main():
                     tag = str(tag)
                 pretty_path.append(tag)
         
-        print "{}: {}".format("/".join(pretty_path), message)
+        reason = difference[1]
+        details = difference[2:]
+        
+        print(
+            "{}: {}, {}".format(
+                "/".join(pretty_path), 
+                reason, " ".join(str(x) for x in details)))
     
     return 0 if (len(differences) == 0) else 1
 

@@ -24,14 +24,13 @@ def main():
     differences = jsondiff.get_differences(a, b, arguments.exclude)
     
     for difference in differences:
-        if len(difference) == 1:
-            path = difference[0]
-            message = "deleted"
-        else:
-            path, new_value = difference
-            message = str(new_value)
-        
-        print "{}: {}".format("/".join(str(x) for x in path), message)
+        path = difference[0]
+        reason = difference[1]
+        details = difference[2:]
+        print(
+            "{}: {}, {}".format(
+                "/".join(pretty), 
+                reason, " ".join(str(x) for x in details)))
 
     return 0 if (len(differences) == 0) else 1
 

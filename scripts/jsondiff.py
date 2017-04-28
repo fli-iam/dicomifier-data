@@ -22,14 +22,14 @@ def get_differences(a, b, exclusions=None, parent_path=None):
         
         if not in_a:
             # Added in b
-            differences.append((path, b[field]))
+            differences.append((path, "added", b[field]))
         elif not in_b:
             # Deleted in b
-            differences.append((path, ))
+            differences.append((path, "deleted", a[field]))
         else:
             # Modified
             if type(item_a) != type(item_b):
-                differences.append((path, item_b))
+                differences.append((path, "type modified", type(item_a), type(item_b)))
             else:
                 if isinstance(item_a, list) or isinstance(item_a, dict):
                     differences.extend(
@@ -44,7 +44,7 @@ def get_differences(a, b, exclusions=None, parent_path=None):
                     else:
                         is_equal = operator.eq
                     if not is_equal(item_a, item_b):
-                        differences.append((path, b[field]))
+                        differences.append((path, "value modified", a[field], b[field]))
     
     return differences
 

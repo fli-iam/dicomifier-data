@@ -9,27 +9,48 @@ import sys
 import tempfile
 
 def main():
-    input_ = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "input",
-            "20160718_115906_plateforme_fantome_nouille_other_1_7"))
-    baseline = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "baseline",
-            "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"))
-    test = tempfile.mkdtemp()
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    input_ = os.path.join(root, "input")
+    baseline = os.path.join(root, "baseline")
     
-    try:
+    tests = [
+        [
+            [],
+            os.path.join(input_, "20160718_115906_plateforme_fantome_nouille_other_1_7"),
+            os.path.join(baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm")
+        ],
+        [
+            ["-m"],
+            os.path.join(input_, "20160718_115906_plateforme_fantome_nouille_other_1_7"),
+            os.path.join(baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm.multi")
+        ],
+        [
+            [],
+            os.path.join(input_, "lb_140721.Bq1"),
+            os.path.join(baseline, "lb_140721.Bq1.dcm")
+        ],
+        [
+            [],
+            os.path.join(input_, "lb_140721.Bx1"),
+            os.path.join(baseline, "lb_140721.Bx1.dcm")
+        ]
+    ]
+    
+    for arguments, case_input, case_baseline in tests:
+        case_output = tempfile.mkdtemp()
         try:
-            subprocess.check_call([
-                "bruker2dicom", "convert", "--dicomdir", input_, test])
-        except subprocess.CalledProcessError as e:
-            print e.output
-            return
-        
-        diff(baseline, test)
-    finally:
-        shutil.rmtree(test)
+            try:
+                subprocess.check_call(
+                    ["bruker2dicom", "convert", "--dicomdir"]
+                    +arguments
+                    +[case_input, case_output])
+            except subprocess.CalledProcessError as e:
+                print e.output
+                return
+            
+            diff(case_baseline, case_output)
+        finally:
+            shutil.rmtree(case_output)
 
 def diff(baseline, test):
     dicomdiff = os.path.abspath(

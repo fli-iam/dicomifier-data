@@ -78,6 +78,8 @@ def diff(baseline, test):
                         "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
                         "-x", "InstanceCreationTime",
                         "-x", "SpecificCharacterSet",
+                        "-x", "ContentDate",
+                        "-x", "ContentTime",
                         baseline_filename, test_filename],
                         stderr=subprocess.STDOUT)
                 except subprocess.CalledProcessError as e:

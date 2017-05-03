@@ -7,34 +7,38 @@ import subprocess
 import sys
 import tempfile
 
+import numpy.testing
+
+import dicomifier
+
+import jsondiff
+
 def main():
-    input_ = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "baseline",
-            "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"))
-    baseline = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "baseline",
-            "20160718_115906_plateforme_fantome_nouille_other_1_7.nii"))
-    test = tempfile.mkdtemp()
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    input_ = os.path.join(root, "baseline")
+    baseline = os.path.join(root, "baseline")
     
-    try:
+    tests = [
+        [
+            os.path.join(input_, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"),
+            os.path.join(baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.nii")
+        ],
+    ]
+    
+    for case_input, case_baseline in tests:
+        case_output = tempfile.mkdtemp()
         try:
-            subprocess.check_call(["dicom2nifti", input_, test])
-        except subprocess.CalledProcessError as e:
-            print e.output
-            return
-        
-        baseline_root = os.path.join(
-            baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.nii")
-        diff(baseline, test)
-    finally:
-        shutil.rmtree(test)
+            try:
+                subprocess.check_call(["dicom2nifti", case_input, case_output])
+            except subprocess.CalledProcessError as e:
+                print e.output
+                return
+            
+            diff(case_baseline, case_output)
+        finally:
+            shutil.rmtree(case_output)
         
 def diff(baseline, test):
-    jsondiff = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "jsondiff"))
-    
     # Walk the baseline to find missing missing in test and different from test
     for pathname, dirnames, filenames in os.walk(baseline):
         relative_pathname = pathname[len(os.path.join(baseline, "")):]
@@ -49,7 +53,9 @@ def diff(baseline, test):
                 if filename.endswith(".json"):
                     try:
                         subprocess.check_output([
-                            jsondiff, 
+                            os.path.abspath(
+                                os.path.join(
+                                    os.path.dirname(__file__), "jsondiff")), 
                             baseline_filename, test_filename],
                             stderr=subprocess.STDOUT)
                     except subprocess.CalledProcessError as e:

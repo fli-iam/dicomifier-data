@@ -24,12 +24,12 @@ def main():
     differences = jsondiff.get_differences(a, b, arguments.exclude)
     
     for difference in differences:
-        path = difference[0]
+        path = [str(x) for x in difference[0]]
         reason = difference[1]
         details = difference[2:]
         print(
             "{}: {}, {}".format(
-                "/".join(pretty), 
+                "/".join(path), 
                 reason, " ".join(str(x) for x in details)))
 
     return 0 if (len(differences) == 0) else 1

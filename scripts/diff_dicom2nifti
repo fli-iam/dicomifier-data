@@ -23,6 +23,10 @@ def main():
             os.path.join(input_, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm"),
             os.path.join(baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.nii")
         ],
+        [
+            os.path.join(input_, "20160718_115906_plateforme_fantome_nouille_other_1_7.dcm.multi"),
+            os.path.join(baseline, "20160718_115906_plateforme_fantome_nouille_other_1_7.nii.multi")
+        ],
     ]
     
     for case_input, case_baseline in tests:

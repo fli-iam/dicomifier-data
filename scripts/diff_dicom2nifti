@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import filecmp
 import os
 import shutil
@@ -7,9 +9,8 @@ import subprocess
 import sys
 import tempfile
 
+import nibabel
 import numpy.testing
-
-import dicomifier
 
 import jsondiff
 
@@ -51,8 +52,8 @@ def diff(baseline, test):
             baseline_filename = os.path.join(pathname, filename)
             test_filename = os.path.join(test_pathname, filename)
             if not os.path.isfile(os.path.join(test_pathname, filename)):
-                print "{} missing in test".format(
-                    os.path.join(relative_pathname, filename))
+                print("{} missing in test".format(
+                    os.path.join(relative_pathname, filename)))
             else:
                 if filename.endswith(".json"):
                     try:
@@ -63,15 +64,15 @@ def diff(baseline, test):
                             baseline_filename, test_filename],
                             stderr=subprocess.STDOUT)
                     except subprocess.CalledProcessError as e:
-                        print "Differences on {}".format(
-                            os.path.join(relative_pathname, filename))
-                        print e.output
+                        print("Differences on {}".format(
+                            os.path.join(relative_pathname, filename)))
+                        print(e.output)
                 elif filename.endswith(".nii") or filename.endswith(".nii.gz"):
                     differences = get_nifti_differences(
                         baseline_filename, test_filename)
                     if differences:
-                        print "Differences on {}".format(
-                            os.path.join(relative_pathname, filename))
+                        print("Differences on {}".format(
+                            os.path.join(relative_pathname, filename)))
                         for difference in differences:
                             path = [str(x) for x in difference[0]]
                             reason = difference[1]
@@ -86,8 +87,8 @@ def diff(baseline, test):
                             ["diff", baseline_filename, test_filename],
                             stderr=subprocess.STDOUT)
                     except subprocess.CalledProcessError as e:
-                        print "Differences on {}".format(
-                            os.path.join(relative_pathname, filename))
+                        print("Differences on {}".format(
+                            os.path.join(relative_pathname, filename)))
     
     # Walk the test to find files missing in baseline (the difference between 
     # files has already been tested).
@@ -96,34 +97,25 @@ def diff(baseline, test):
         baseline_pathname = os.path.join(baseline, relative_pathname)
         for filename in filenames:
             if not os.path.isfile(os.path.join(baseline_pathname, filename)):
-                print "{} missing in baseline".format(
-                    os.path.join(relative_pathname, filename))
+                print("{} missing in baseline".format(
+                    os.path.join(relative_pathname, filename)))
 
 def get_nifti_differences(baseline_filename, test_filename):
-    baseline_image = dicomifier.nifti.read(baseline_filename)
-    test_image = dicomifier.nifti.read(test_filename)
+    baseline_image = nibabel.load(baseline_filename)
+    test_image = nibabel.load(test_filename)
     
     differences = []
     
     baseline_data = {}
     test_data = {}
-    for field in dir(baseline_image):
-        if field.startswith("_"):
-            continue
-        elif field == "data":
-            if not numpy.allclose(baseline_image.data, test_image.data):
-                differences.append([
-                    ["data"], "value modified", 
-                    "Maximum difference: {}".format(
-                        numpy.abs(baseline_image.data-test_image.data).max())])
-                
-        else:
-            baseline_data[field] = numpy.asarray(
-                    getattr(baseline_image, field)
-                ).ravel().tolist()
-            test_data[field] = numpy.asarray(
-                    getattr(test_image, field)
-                ).ravel().tolist()
+    for field in ["dataobj", "affine"]:
+        baseline_field = getattr(baseline_image, field)
+        test_field = getattr(test_image, field)
+        if not numpy.allclose(baseline_field, test_field):
+            differences.append([
+                [field], "value modified", 
+                "Maximum difference: {}".format(
+                    numpy.abs(baseline_field-test_field).max())])
     differences.extend(jsondiff.get_differences(baseline_data, test_data))
     
     return differences

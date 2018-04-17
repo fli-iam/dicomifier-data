@@ -4,8 +4,6 @@ import argparse
 import json
 import sys
 
-import odil
-
 import jsondiff
 
 def main():

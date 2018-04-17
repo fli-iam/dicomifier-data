@@ -36,7 +36,7 @@ def main():
             try:
                 subprocess.check_call(["dicom2nifti", case_input, case_output])
             except subprocess.CalledProcessError as e:
-                print e.output
+                print(e.output)
                 return
             
             diff(case_baseline, case_output)

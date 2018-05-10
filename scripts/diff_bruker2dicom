@@ -9,6 +9,10 @@ import subprocess
 import sys
 import tempfile
 
+import odil
+
+import jsondiff
+
 def main():
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     input_ = os.path.join(root, "input")
@@ -81,12 +85,28 @@ def diff(baseline, test):
                         "-x", "SpecificCharacterSet",
                         "-x", "ContentDate",
                         "-x", "ContentTime",
+                        "-x", "EncapsulatedDocument",
                         baseline_filename, test_filename],
                         stderr=subprocess.STDOUT)
                 except subprocess.CalledProcessError as e:
                     print("Differences on {}".format(
                         os.path.join(relative_pathname, filename)))
                     print(e.output)
+                # EncapsulatedDocument may contain different binary 
+                # representation of the same Bruker data set: process 
+                # separately
+                baseline_bruker = get_encapsulated_document(baseline_filename)
+                test_bruker = get_encapsulated_document(test_filename)
+                if any(x is not None for x in [baseline_bruker, test_bruker]):
+                    differences = jsondiff.get_differences(baseline_bruker, test_bruker)
+                    for difference in differences:
+                        path = [str(x) for x in difference[0]]
+                        reason = difference[1]
+                        details = difference[2:]
+                        print(
+                            "{}: {}, {}".format(
+                                "/".join(path), 
+                                reason, " ".join(str(x) for x in details)))
     
     # Walk the test to find files missing in baseline (the difference between 
     # files has already been tested).
@@ -97,6 +117,15 @@ def diff(baseline, test):
             if not os.path.isfile(os.path.join(baseline_pathname, filename)):
                 print("{} missing in baseline".format(
                     os.path.join(relative_pathname, filename)))
+
+def get_encapsulated_document(path):
+    with odil.open(path, "rb") as fd:
+        data_set = odil.Reader.read_file(fd)[1]
+    if "EncapsulatedDocument" in data_set:
+        data = data_set.as_binary("EncapsulatedDocument")[0].get_memory_view().tobytes()
+        return json.loads(data)
+    else:
+        return None
 
 if __name__ == "__main__":
     sys.exit(main())

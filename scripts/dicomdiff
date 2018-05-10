@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import argparse
 import json
@@ -21,8 +21,12 @@ def main():
         help="Exclude elements from comparison")
     arguments = parser.parse_args()
     
-    a = [json.loads(odil.as_json(x)) for x in odil.read(arguments.a)]
-    b = [json.loads(odil.as_json(x)) for x in odil.read(arguments.b)]
+    a = [
+        json.loads(odil.as_json(x)) 
+        for x in odil.Reader.read_file(odil.iostream(open(arguments.a, "rb")))]
+    b = [
+        json.loads(odil.as_json(x)) 
+        for x in odil.Reader.read_file(odil.iostream(open(arguments.b, "rb")))]
     
     differences = []
     if arguments.header:

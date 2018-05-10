@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!python3
 
 import filecmp
+import json
 import logging
 import os
 import shutil
@@ -45,7 +46,7 @@ def main():
                     +arguments
                     +[case_input, case_output])
             except subprocess.CalledProcessError as e:
-                print e.output
+                print(e.output)
                 return
             
             diff(case_baseline, case_output)
@@ -68,8 +69,8 @@ def diff(baseline, test):
             baseline_filename = os.path.join(pathname, filename)
             test_filename = os.path.join(test_pathname, filename)
             if not os.path.isfile(os.path.join(test_pathname, filename)):
-                print "{} missing in test".format(
-                    os.path.join(relative_pathname, filename))
+                print("{} missing in test".format(
+                    os.path.join(relative_pathname, filename)))
             else:
                 try:
                     subprocess.check_output([
@@ -83,9 +84,9 @@ def diff(baseline, test):
                         baseline_filename, test_filename],
                         stderr=subprocess.STDOUT)
                 except subprocess.CalledProcessError as e:
-                    print "Differences on {}".format(
-                        os.path.join(relative_pathname, filename))
-                    print e.output
+                    print("Differences on {}".format(
+                        os.path.join(relative_pathname, filename)))
+                    print(e.output)
     
     # Walk the test to find files missing in baseline (the difference between 
     # files has already been tested).
@@ -94,8 +95,8 @@ def diff(baseline, test):
         baseline_pathname = os.path.join(baseline, relative_pathname)
         for filename in filenames:
             if not os.path.isfile(os.path.join(baseline_pathname, filename)):
-                print "{} missing in baseline".format(
-                    os.path.join(relative_pathname, filename))
+                print("{} missing in baseline".format(
+                    os.path.join(relative_pathname, filename)))
 
 if __name__ == "__main__":
     sys.exit(main())

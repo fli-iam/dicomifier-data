@@ -123,7 +123,7 @@ def get_encapsulated_document(path):
         data_set = odil.Reader.read_file(fd)[1]
     if "EncapsulatedDocument" in data_set:
         data = data_set.as_binary("EncapsulatedDocument")[0].get_memory_view().tobytes()
-        return json.loads(data)
+        return json.loads(data.decode())
     else:
         return None
 

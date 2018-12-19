@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from __future__ import print_function
 
 import filecmp
@@ -66,7 +64,7 @@ def diff(baseline, test):
                     except subprocess.CalledProcessError as e:
                         print("Differences on {}".format(
                             os.path.join(relative_pathname, filename)))
-                        print(e.output)
+                        print(e.output.decode())
                 elif filename.endswith(".nii") or filename.endswith(".nii.gz"):
                     differences = get_nifti_differences(
                         baseline_filename, test_filename)

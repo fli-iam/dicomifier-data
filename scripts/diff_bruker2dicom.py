@@ -11,6 +11,7 @@ import tempfile
 
 import odil
 
+import dicomdiff
 import jsondiff
 
 def main():
@@ -58,9 +59,6 @@ def main():
             shutil.rmtree(case_output)
 
 def diff(baseline, test):
-    dicomdiff = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "dicomdiff"))
-    
     # Walk the baseline to find missing missing in test and different from test
     for pathname, dirnames, filenames in os.walk(baseline):
         relative_pathname = pathname[len(os.path.join(baseline, "")):]
@@ -76,22 +74,14 @@ def diff(baseline, test):
                 print("{} missing in test".format(
                     os.path.join(relative_pathname, filename)))
             else:
-                try:
-                    subprocess.check_output([
-                        dicomdiff, "-H",
-                        "-x", "MediaStorageSOPInstanceUID", 
-                        "-x", "SOPInstanceUID", "-x", "InstanceCreationDate",
-                        "-x", "InstanceCreationTime",
-                        "-x", "SpecificCharacterSet",
-                        "-x", "ContentDate",
-                        "-x", "ContentTime",
-                        "-x", "EncapsulatedDocument",
-                        baseline_filename, test_filename],
-                        stderr=subprocess.STDOUT)
-                except subprocess.CalledProcessError as e:
-                    print("Differences on {}".format(
-                        os.path.join(relative_pathname, filename)))
-                    print(e.output)
+                result = dicomdiff.diff(
+                    baseline_filename, test_filename, True,[
+                        str(getattr(odil.registry, x)) for x in [
+                            "MediaStorageSOPInstanceUID", "SOPInstanceUID", 
+                            "InstanceCreationDate", "InstanceCreationTime", 
+                            "SpecificCharacterSet", "ContentDate",
+                            "ContentTime", "EncapsulatedDocument"]])
+                
                 # EncapsulatedDocument may contain different binary 
                 # representation of the same Bruker data set: process 
                 # separately

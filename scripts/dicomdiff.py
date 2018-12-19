@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+from __future__ import print_function
 
 import argparse
 import json
@@ -20,19 +20,20 @@ def main():
         type=lambda x: str(getattr(odil.registry, x)),
         help="Exclude elements from comparison")
     arguments = parser.parse_args()
-    
+    return diff(vars(arguments))
+
+def diff(a, b, header, exclude):
     a = [
         json.loads(odil.as_json(x)) 
-        for x in odil.Reader.read_file(odil.iostream(open(arguments.a, "rb")))]
+        for x in odil.Reader.read_file(odil.iostream(open(a, "rb")))]
     b = [
         json.loads(odil.as_json(x)) 
-        for x in odil.Reader.read_file(odil.iostream(open(arguments.b, "rb")))]
+        for x in odil.Reader.read_file(odil.iostream(open(b, "rb")))]
     
     differences = []
-    if arguments.header:
-        differences.extend(
-            jsondiff.get_differences(a[0], b[0], arguments.exclude))
-    differences.extend(jsondiff.get_differences(a[1], b[1], arguments.exclude))
+    if header:
+        differences.extend(jsondiff.get_differences(a[0], b[0], exclude))
+    differences.extend(jsondiff.get_differences(a[1], b[1], exclude))
     
     for difference in differences:
         path = difference[0]

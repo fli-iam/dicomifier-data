@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-import filecmp
+import json
 import os
 import shutil
 import subprocess
@@ -54,17 +54,17 @@ def diff(baseline, test):
                     os.path.join(relative_pathname, filename)))
             else:
                 if filename.endswith(".json"):
-                    try:
-                        subprocess.check_output([
-                            os.path.abspath(
-                                os.path.join(
-                                    os.path.dirname(__file__), "jsondiff")), 
-                            baseline_filename, test_filename],
-                            stderr=subprocess.STDOUT)
-                    except subprocess.CalledProcessError as e:
-                        print("Differences on {}".format(
-                            os.path.join(relative_pathname, filename)))
-                        print(e.output.decode())
+                    differences = jsondiff.get_differences(
+                        json.load(open(baseline_filename)), 
+                        json.load(open(test_filename)))
+                    for difference in differences:
+                        path = [str(x) for x in difference[0]]
+                        reason = difference[1]
+                        details = difference[2:]
+                        print(
+                            "{}: {}, {}".format(
+                                "/".join(path), 
+                                reason, " ".join(str(x) for x in details)))
                 elif filename.endswith(".nii") or filename.endswith(".nii.gz"):
                     differences = get_nifti_differences(
                         baseline_filename, test_filename)

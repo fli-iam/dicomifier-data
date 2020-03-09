@@ -20,9 +20,11 @@ def main():
         type=lambda x: str(getattr(odil.registry, x)),
         help="Exclude elements from comparison")
     arguments = parser.parse_args()
-    return diff(vars(arguments))
+    return diff(**vars(arguments))
 
 def diff(a, b, header, exclude):
+    # WARNING? this is wrong for float values as we could have different 
+    # representations for close values.
     a = [
         json.loads(odil.as_json(x)) 
         for x in odil.Reader.read_file(odil.iostream(open(a, "rb")))]

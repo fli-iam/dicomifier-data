@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import base64
 import json
 import os
 import shutil
@@ -54,9 +55,13 @@ def diff(baseline, test):
                     os.path.join(relative_pathname, filename)))
             else:
                 if filename.endswith(".json"):
-                    differences = jsondiff.get_differences(
+                    meta_data = [
                         json.load(open(baseline_filename)), 
-                        json.load(open(test_filename)))
+                        json.load(open(test_filename))]
+                    differences = jsondiff.get_differences(
+                        *meta_data,
+                        # Process EncapsulatedDocument separately
+                        exclusions=["EncapsulatedDocument"])
                     for difference in differences:
                         path = [str(x) for x in difference[0]]
                         reason = difference[1]
@@ -65,6 +70,21 @@ def diff(baseline, test):
                             "{}: {}, {}".format(
                                 "/".join(path), 
                                 reason, " ".join(str(x) for x in details)))
+                    encaspulated_documents = [
+                        [
+                            json.loads(base64.b64decode(x)) 
+                            for x in m.get("EncapsulatedDocument", [])]
+                        for m in meta_data]
+                    for documents in zip(*encaspulated_documents):
+                        for difference in jsondiff.get_differences(*documents):
+                            path = [str(x) for x in difference[0]]
+                            reason = difference[1]
+                            details = difference[2:]
+                            print(
+                                "{} (encapsulated document): {}, {}".format(
+                                    "/".join(path), 
+                                    reason, " ".join(str(x) for x in details)))
+                    
                 elif filename.endswith(".nii") or filename.endswith(".nii.gz"):
                     differences = get_nifti_differences(
                         baseline_filename, test_filename)
@@ -113,7 +133,7 @@ def get_nifti_differences(baseline_filename, test_filename):
             differences.append([
                 [field], "value modified", 
                 "Maximum difference: {}".format(
-                    numpy.abs(baseline_field-test_field).max())])
+                    numpy.abs(numpy.subtract(baseline_field, test_field)).max())])
     differences.extend(jsondiff.get_differences(baseline_data, test_data))
     
     return differences

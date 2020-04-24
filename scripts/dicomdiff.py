@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import argparse
 import json
+import os
 import sys
 
 import odil
@@ -22,15 +23,11 @@ def main():
     arguments = parser.parse_args()
     return diff(**vars(arguments))
 
-def diff(a, b, header, exclude):
+def diff(a_path, b_path, header, exclude):
     # WARNING? this is wrong for float values as we could have different 
     # representations for close values.
-    a = [
-        json.loads(odil.as_json(x)) 
-        for x in odil.Reader.read_file(odil.iostream(open(a, "rb")))]
-    b = [
-        json.loads(odil.as_json(x)) 
-        for x in odil.Reader.read_file(odil.iostream(open(b, "rb")))]
+    a = [json.loads(odil.as_json(x)) for x in odil.Reader.read_file(a_path)]
+    b = [json.loads(odil.as_json(x)) for x in odil.Reader.read_file(b_path)]
     
     differences = []
     if header:
@@ -57,7 +54,9 @@ def diff(a, b, header, exclude):
         details = difference[2:]
         
         print(
-            "{}: {}, {}".format(
+            "{} {}: {}, {}".format(
+                # Display common suffix: reverse of common prefix
+                os.path.commonprefix([a_path[::-1], b_path[::-1]])[::-1],
                 "/".join(pretty_path), 
                 reason, " ".join(str(x) for x in details)))
     

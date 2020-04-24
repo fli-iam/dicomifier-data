@@ -1,6 +1,3 @@
-from __future__ import print_function
-
-import filecmp
 import json
 import logging
 import os
@@ -94,7 +91,11 @@ def diff(baseline, test):
                         reason = difference[1]
                         details = difference[2:]
                         print(
-                            "{}: {}, {}".format(
+                            "{} {}: {}, {}".format(
+                                # Display common suffix: reverse of common prefix
+                                os.path.commonprefix(
+                                        [baseline_filename[::-1], test_filename[::-1]]
+                                    )[::-1],
                                 "/".join(path), 
                                 reason, " ".join(str(x) for x in details)))
     
